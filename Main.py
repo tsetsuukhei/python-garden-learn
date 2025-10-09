@@ -2,9 +2,6 @@ import streamlit as st
 import textwrap
 from dataclasses import dataclass
 from typing import Callable, List, Dict, Tuple
-import math, io, wave
-from code_editor import code_editor
-from array import array
 
 st.set_page_config(page_title="Python Garden", page_icon="🪴", layout="wide")
 
