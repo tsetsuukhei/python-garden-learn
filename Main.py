@@ -3,6 +3,7 @@ import textwrap
 from dataclasses import dataclass
 from typing import Callable, List, Dict, Tuple
 import math, io, wave
+from code_editor import code_editor
 from array import array
 
 st.set_page_config(page_title="Python Garden", page_icon="🪴", layout="wide")
@@ -51,6 +52,12 @@ st.markdown(
       .flo-4{ bottom:12%; right:12%; font-size:70px; animation-delay: 1.6s;}
       .legend{ margin-bottom:8px;}
       .example-code{ background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:8px 10px; font-family:monospace; font-size:13px; margin:6px 0;}
+      .stTextArea textarea {
+            spellcheck: false;
+            -webkit-spellcheck: false;
+            -moz-spellcheck: false;
+            -ms-spellcheck: false;
+        }
 
       @media (prefers-color-scheme: dark) {
     .stApp {
@@ -331,7 +338,7 @@ LEVELS: List[Level] = [
                 description=["Ургамлын нэрийг хувьсагчид хадгалах."],
                 explanation="""<div class='explain-box'>
 <h5>📚 Хувьсагч гэж юу вэ?</h5>
-<p>Хувьсагч нь мэдээллийг хадгалах хайрцагтай адил. Пайтонд хувьсагч зарлахын тулд хувьсагчийнхаа нэрийг бичээд, араас нь <code>=</code> тэмдэгтийг ашиглан утга оноож өгдөг.</p>
+<p>Хувьсагч нь мэдээллийг хадгалах хайрцагтай адил. Пайтонд хувьсагч зарлахын тулд хувьсагчийнхаа нэрийг бичээд араас нь <code>=</code> тэмдэгтийг ашиглан утга оноож өгдөг.</p>
 <p><strong>Жишээ:</strong></p>
 <div class='example-code'>my_age = 25<br>favorite_color = "blue"</div>
 <p>Хувьсагчийн нэрэнд латин үсэг, цифр, доогуур зураас орж болно (my_variable_name). Гэвч хувьсагчийн нэр заавал үсгээр эхлэх ёстой.</p>
@@ -884,7 +891,7 @@ with st.container():
     st.markdown("<div class='app-wrap'>", unsafe_allow_html=True)
 
 st.markdown("# 🪴 Python Garden", unsafe_allow_html=True)
-st.caption("Python ашиглаж цэцэрлэгээ тохижуулцгаая! 🌱")
+st.caption("Python ашиглан цэцэрлэгээ тохижуулцгаая! 🌱")
 
 # ===== 0) NAV QUEUE: apply button-driven changes BEFORE widgets render =====
 # (Buttons set 'pending_step' then st.rerun(); we consume it here.)
@@ -945,18 +952,12 @@ with st.sidebar:
         key="sb_step_idx",
         on_change=_on_step_change,
     )
+    st.divider()
+
 
 # ===== 4) USE current level/step =====
 level = LEVELS[st.session_state.level_idx]
 step  = level.steps[st.session_state.step_idx]
-
-# (re)build grid if needed (optional guard)
-cur_key = f"L{st.session_state.level_idx}-S{st.session_state.step_idx}"
-if st.session_state.get("loaded_key") != cur_key:
-    st.session_state.grid = step.setup(level.size)
-    st.session_state["loaded_key"] = cur_key
-    st.session_state.pop("last_ns", None)
-
 
 
 _cur_key = f"L{st.session_state.level_idx}-S{st.session_state.step_idx}"
