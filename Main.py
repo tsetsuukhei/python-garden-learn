@@ -939,7 +939,7 @@ with st.sidebar:
         key="sb_step_idx",
         on_change=_on_step_change,
     )
-    st.divider()
+
 
 
 # ===== 4) USE current level/step =====
