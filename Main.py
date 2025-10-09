@@ -438,7 +438,7 @@ LEVELS: List[Level] = [
 <p><strong>Жишээ:</strong> <code>has_enough_water = water_level >= 50</code></p>
 </div>""",
                 starter=textwrap.dedent("""
-                    # Хангалттай их ус байгаа эсэхийг шалга
+                    # Хангалттай их ус байгаа эсэхийг шалгахад доорх кодыг ажиллуулна уу
                     water_level = 75
                     minimum_needed = 50
                     has_enough = water_level >= minimum_needed
@@ -471,11 +471,12 @@ not False → True
 </div>""",
                 starter=textwrap.dedent("""
                     # Ургамал амьд эсэхийг шалга
+                    # Ургамал нь услагдсан бөгөөд хогийн ургамал биш бол амьд байна
                     has_water = True
                     is_weed = False
-                    is_alive = has_water and not is_weed
+                    is_alive = 
                 """).strip(),
-                hint="Combine conditions: has_water and not is_weed",
+                hint="Уг нөхцөлүүдийг нийлүүл: has_water and not is_weed",
                 setup=lambda N: make_grid(N, plant_default=True),
                 validator=lambda state,N: (
                     (
@@ -510,9 +511,9 @@ else:<br>
                     is_dry = True
                     
                     if is_dry:
-                        needs_water = True
+                        needs_water = 
                     else:
-                        needs_water = False
+                        needs_water = 
                 """).strip(),
                 hint="if-ийн дараа ажиллах ёстой код шинэ мөрнөөс, урдаа инденттэй байх ёстой. is_dry-ийг өөрчлөөд кодыг дахин ажиллуулж үзээрэй.",
                 setup=lambda N: make_grid(N, plant_default=True),
@@ -542,15 +543,13 @@ numbers[2] → 3
                 starter=textwrap.dedent("""
                     # Ургамлуудын байрлалыг листэд хадгалах
                     # Байршлыг нь ашиглан бүх ургамлыг услаарай
+                    # water(0) нь 0-р байрлал дахь ургамлыг усална
                     positions = [0, 1, 2, 3, 4]
                     
                     water(positions[0])
                     water(positions[1])
-                    water(positions[2])
-                    water(positions[3])
-                    water(positions[4])
                 """).strip(),
-                hint="positions[0], positions[1], гэх мэтчилэн элемент бүрт хандаарай",
+                hint="positions[2], positions[3], гэх мэтчилэн элемент бүрт хандаарай",
                 setup=lambda N: make_grid(N, plant_default=True),
                 validator=lambda state,N: (
                     all(state[c].watered for c in range(N)),
@@ -573,10 +572,10 @@ numbers[2] → 3
                 </div>""",
                 starter=textwrap.dedent("""
                     # Давталтыг ашиглан бүх ургамлыг услаарай
+                    # water(0) нь 0-р байрлал дахь ургамлыг усална
                     positions = [0, 1, 2, 3, 4]
                     
-                    for pos in positions:
-                        water(pos)
+                    for 
                 """).strip(),
                 hint="for pos in positions: гээд шинэ мөрнөөс зай аваад үйлдлээ бичээрэй",
                 setup=lambda N: make_grid(N, plant_default=True),
@@ -606,8 +605,8 @@ numbers[2] → 3
                 starter=textwrap.dedent("""
                     # Лист ашиглахын оронд range() функцийг ашиглаарай
                     # Бүх ургамлыг услаарай
-                    for i in range(5):
-                        water(i)
+                    # water(0) нь 0-р байрлал дахь ургамлыг усална
+                    for 
                 """).strip(),
                 hint="range(5) нь 0, 1, 2, 3, 4-ийг үүсгэнэ",
                 setup=lambda N: make_grid(N, plant_default=True),
@@ -673,7 +672,7 @@ if get(i)['plant']:<br>
                     # Water only tiles with plants
                     for i in range(25):
                         if get(i)['plant']:
-                            water(i)
+                            # энд усална
                 """).strip(),
                 hint="Check get(i)['plant'] before calling water(i)",
                 setup=lambda N: [Tile(plant=(i % 2 == 0), watered=False, fertilized=False, removed=False) for i in range(N*N)],
@@ -699,9 +698,7 @@ if get(i)['plant']:<br>
         </div>""",
                 starter=textwrap.dedent("""
                     # Дөрвөн буланг бордоорой
-                    corners = (0, N-1, N*(N-1), N*N-1)
-                    for i in corners:
-                        fertilize(i)
+                    
                 """).strip(),
                 hint="булангууд = (0, N-1, N*(N-1), N*N-1)",
                 setup=lambda N: make_grid(N, plant_default=True),
@@ -730,9 +727,7 @@ if get(i)['plant']:<br>
             </div>""",
                 starter=textwrap.dedent("""
                     # хоосон нүдийг арилгах
-                    for i in range(25):
-                        if not get(i)['plant']:
-                            remove(i)
+                    # remove(0) нь 0-р байрлал дахь ургамлыг арилгана
                 """).strip(),
                 hint="'not get(i)['plant']'-ийг хоосон нүдийг олохдоо ашиглаарай",
                 setup=lambda N: [Tile(plant=(i % 5 != 0), watered=False, fertilized=False, removed=False) for i in range(N*N)],
@@ -762,9 +757,7 @@ if get(i)['plant']:<br>
                 starter=textwrap.dedent("""
                     # Бүтэн мөр услах функц бичих
                     def water_row(r):
-                        for c in range(N):
-                            idx = r * N + c
-                            water(idx)
+                        
                     
                     # Water rows 1 and 3
                     water_row(1)
@@ -808,9 +801,7 @@ if (row + col) % 2 == 0:<br>
                     # Шатрын хөлөг шиг услах
                     for row in range(N):
                         for col in range(N):
-                            idx = row * N + col
-                            if (row + col) % 2 == 0:
-                                water(idx)
+                            
                 """).strip(),
                 hint="(row + col) % 2 == 0 ашиглаарай",
                 setup=lambda N: make_grid(N, plant_default=True),
@@ -841,11 +832,7 @@ col == N-1      # Баруун зах
                     # Хүрээний ургамлуудыг услаарай
                     for row in range(N):
                         for col in range(N):
-                            idx = row * N + col
-                            is_edge = (row == 0 or row == N-1 or 
-                                       col == 0 or col == N-1)
-                            if is_edge:
-                                water(idx)
+                            
                 """).strip(),
                 hint="row эсвэл col 0 эсвэл N-1-тэй тэнцүү байна",
                 setup=lambda N: make_grid(N, plant_default=True),
