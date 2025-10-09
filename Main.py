@@ -1029,4 +1029,3 @@ with st.expander("💡 Тусламж", expanded=False):
 st.markdown("</div>", unsafe_allow_html=True)
 st.markdown("</div>", unsafe_allow_html=True)
 st.markdown("</div>", unsafe_allow_html=True)
-st.markdown("<div class='footer'>🌟 @cecuhe</div>", unsafe_allow_html=True)
