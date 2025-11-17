@@ -13,3 +13,12 @@
 | **Түргэвчилсэн хичээл**                | [Youtube Crash Course](https://www.youtube.com/watch?v=K5KVEU3aaeQ)                                      |   
 | **Python for Dummies ном**             | [Python for Dummies](https://github.com/tsetsuukhei/python-garden-learn/blob/main/Beginning%20Programming%20with%20Python%20For%20Dummies%20Mueller%2C%20John%20Paul%20%5BSRG%5D.pdf)|
 | **Pandas түргэвчилсэн хичээл**         | [Youtube Crash Course](https://www.youtube.com/watch?v=2uvysYbKdjM)                                      |   
+
+
+## Анализын жижиг прожект
+Доорх нийтлэлүүдийг дагаад анализ хийх боломжтой
+
+|Info                     |Link                                                                                                                        |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+|**EDA with Pandas**      | [Номын датасет дээр анализ хийх](https://medium.com/@joetandiallo/exploratory-data-analysis-eda-using-python-f85938cb1810) |
+|**Netflix Data Analysis**| [Netflix дата дээр анализ хийх (Youtube заавар)](https://www.youtube.com/watch?v=1ZftU-eU4VA)                              |
