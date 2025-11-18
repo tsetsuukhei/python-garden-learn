@@ -22,3 +22,14 @@
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 |**EDA with Pandas**      | [Номын датасет дээр анализ хийх](https://medium.com/@joetandiallo/exploratory-data-analysis-eda-using-python-f85938cb1810) |
 |**Netflix Data Analysis**| [Netflix дата дээр анализ хийх (Youtube заавар)](https://www.youtube.com/watch?v=1ZftU-eU4VA)                              |
+
+## PDF болон задгай файл (zip) татах арга
+![download instruction](https://github.com/tsetsuukhei/python-garden-learn/blob/main/download_instruction.png "Download instruction")
+
+Файл руу ороход баруун дээд буланд татах icon бий. Download raw file дээрээ дараад файлаа татна.
+
+.ipynb өргөтгөлтэй доорх кодыг татаад Google Drive руугаа оруулаад, дээр нь дарахад Google Colab автоматаар нээгдэнэ.
+
+|Жишээ Пайтон код         |Link                                                                                                                        | Data Link                                   |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |-------------------------------------------- |
+|**Олон эксел файл уншаад, нийлүүлэх**| [Олон эксел файл нийлүүлэх код](https://github.com/tsetsuukhei/python-garden-learn/blob/main/Working_with_multiple_files.ipynb) | [Dummy Sales Data](https://github.com/tsetsuukhei/python-garden-learn/blob/main/sales_files.zip)|
